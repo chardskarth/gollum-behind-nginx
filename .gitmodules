@@ -1,0 +1,3 @@
+[submodule "services/wiki"]
+	path = services/wiki
+	url = git@github.com:chardskarth/gollum-behind-nginx-wiki

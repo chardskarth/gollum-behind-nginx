@@ -1,0 +1,19 @@
+server {
+  listen 80;
+  server_name ${GOLLUM_HOST};
+
+  location / {
+    proxy_pass http://${GOLLUM_DOCKER_HOSTNAME}:${GOLLUM_DOCKER_PORT};
+  }
+}
+
+server {
+  listen 80;
+  server_name ${GENERIC_HOSTNAME};
+
+  location /gollum {
+#    rewrite /gollum/(.*) /$1  break;
+    proxy_pass http://${GOLLUM_DOCKER_HOSTNAME_WITHPATH}:${GOLLUM_DOCKER_PORT};
+  }
+}
+
